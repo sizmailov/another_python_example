@@ -2,7 +2,7 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
-
+import os
 __version__ = '0.0.1'
 
 
@@ -24,9 +24,10 @@ class get_pybind_include(object):
 ext_modules = [
     Extension(
         'python_example',
-        ['src/main.cpp'],
+        ['src/main.cpp', 'src/project.cpp'],
         include_dirs=[
             # Path to pybind11 headers
+            os.path.abspath("."),
             get_pybind_include(),
             get_pybind_include(user=True)
         ],

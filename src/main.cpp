@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 
+#include "src/project.hpp"
+
 int add(int i, int j) {
     return i + j;
 }
@@ -31,6 +33,8 @@ PYBIND11_MODULE(python_example, m) {
 
         Some other explanation about the subtract function.
     )pbdoc");
+
+    m.def("f",project::f);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;
